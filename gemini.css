@@ -1,0 +1,521 @@
+/*
+ * CSS Completo para E-commerce - Frutas Do Jorge
+ * Design: Moderno, Limpo, Responsivo
+ * Paleta: Neutra (Branco, Cinza, Azul) com Ações em Verde
+ */
+
+/* --- 1. Variáveis Globais e Reset --- */
+:root {
+    /* Paleta de Cores */
+    --color-bg: #f8f9fa;
+    --color-surface: #ffffff;
+    --color-border: #e9ecef;
+    --color-text-primary: #212529;
+    --color-text-secondary: #6c757d;
+    --color-primary: #0d6efd; /* Azul principal */
+    --color-primary-hover: #0b5ed7;
+    --color-secondary: #6c757d; /* Cinza para botões secundários */
+    --color-secondary-hover: #5a6268;
+    --color-success: #198754; /* Verde para ações positivas */
+    --color-success-hover: #157347;
+    --color-danger: #dc3545; /* Vermelho para remoção */
+    --color-danger-hover: #bb2d3b;
+
+    /* Tipografia */
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+        Helvetica, Arial, sans-serif;
+
+    /* Estilos */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --transition-fast: 0.2s ease;
+}
+
+/* Reset básico */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    line-height: 1.3;
+    font-weight: 600;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* --- 2. Cabeçalho --- */
+.header {
+    background-color: var(--color-surface);
+    padding: 2rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 2rem;
+}
+
+.logo {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    font-weight: 700;
+}
+
+.tagline {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    margin-top: 0.25rem;
+}
+
+/* --- 3. Layout Principal (Container) --- */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-wrap: wrap; /* Permite que o carrinho quebre a linha em telas menores */
+    align-items: flex-start; /* Alinha os itens no topo */
+    gap: 2rem;
+}
+
+/* --- 4. Seção de Produtos --- */
+.products-section {
+    flex: 3; /* Ocupa 3/4 do espaço */
+    min-width: 300px; /* Largura mínima */
+}
+
+.products-section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.products-grid {
+    display: grid;
+    /* Grid responsivo: cria colunas com no mínimo 260px */
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+}
+
+/* --- 5. Cartão de Produto --- */
+.product-card {
+    background-color: var(--color-surface);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+.product-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-5px);
+}
+
+.product-image {
+    font-size: 5rem; /* Tamanho do ícone/emoji */
+    text-align: center;
+    padding: 2rem 1rem 1rem 1rem;
+    background-color: #fdfdfd; /* Fundo levemente diferente */
+}
+
+.product-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Faz o card crescer para preencher o espaço */
+}
+
+.product-name {
+    font-size: 1.25rem;
+    color: var(--color-text-primary);
+}
+
+.product-description {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    margin: 0.5rem 0 1rem 0;
+    flex-grow: 1; /* Empurra o preço e botões para baixo */
+}
+
+.product-price {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.product-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* --- 6. Botões (Geral e Ações) --- */
+.btn {
+    display: inline-block;
+    padding: 0.6rem 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-align: center;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
+    flex-grow: 1; /* Faz botões preencherem o espaço */
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-hover);
+}
+
+.btn-secondary {
+    background-color: var(--color-border);
+    color: var(--color-text-primary);
+}
+
+.btn-secondary:hover {
+    background-color: #d3d9df;
+}
+
+/* --- 7. Seção do Carrinho (Sidebar) --- */
+.cart-section {
+    flex: 1; /* Ocupa 1/4 do espaço */
+    min-width: 320px;
+    
+    /* Faz o carrinho "flutuar" ao rolar a página */
+    position: sticky;
+    top: 2rem; 
+}
+
+.cart-section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.cart-container {
+    background-color: var(--color-surface);
+    border-radius: var(--border-radius-md);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+}
+
+.cart-items {
+    padding: 0.5rem 1.5rem;
+    max-height: 400px; /* Altura máxima antes de rolar */
+    overflow-y: auto;
+}
+
+.empty-cart {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--color-text-secondary);
+}
+
+/* --- 8. Item do Carrinho --- */
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item-image {
+    font-size: 2.5rem;
+    flex-shrink: 0;
+}
+
+.cart-item-details {
+    flex-grow: 1;
+    margin-right: 0.5rem;
+}
+
+.cart-item-name {
+    font-weight: 600;
+    display: block;
+}
+
+.cart-item-price {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+.cart-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.quantity-btn,
+.remove-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--color-border);
+    background-color: #fff;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%; /* Botões redondos */
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: var(--color-text-secondary);
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.quantity-btn:hover {
+    background-color: var(--color-border);
+    color: var(--color-text-primary);
+}
+
+.cart-item-actions span {
+    font-weight: 500;
+    min-width: 20px;
+    text-align: center;
+}
+
+.remove-btn {
+    font-size: 1.4rem;
+    border-color: transparent;
+    color: var(--color-danger);
+    background-color: transparent;
+}
+
+.remove-btn:hover {
+    background-color: var(--color-danger);
+    color: #fff;
+    border-color: var(--color-danger);
+}
+
+/* --- 9. Resumo do Carrinho --- */
+.cart-summary {
+    padding: 1.5rem;
+    border-top: 2px solid var(--color-border);
+    background-color: #fdfdfd;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+#totalPrice {
+    color: var(--color-primary);
+    font-size: 1.5rem;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: var(--color-success);
+    color: #fff;
+    border: none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+
+.checkout-btn:hover {
+    background-color: var(--color-success-hover);
+}
+
+.checkout-btn:disabled {
+    background-color: var(--color-border);
+    color: var(--color-text-secondary);
+    cursor: not-allowed;
+}
+
+/* --- 10. Mensagens e Alertas --- */
+.message-container {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.message {
+    padding: 1rem 1.5rem;
+    background-color: var(--color-surface);
+    border-radius: var(--border-radius-sm);
+    box-shadow: var(--shadow-md);
+    border-left: 5px solid var(--color-primary); /* Padrão (info) */
+    animation: fadeIn 0.3s ease, fadeOut 0.3s ease 4.7s forwards;
+    opacity: 0;
+    min-width: 280px;
+}
+
+/* O JS já aplica a cor da borda, mas podemos ter estilos base */
+.message.success { border-left-color: var(--color-success); }
+.message.error { border-left-color: var(--color-danger); }
+.message.info { border-left-color: var(--color-primary); }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+}
+
+/* --- 11. Footer --- */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    border-top: 1px solid var(--color-border);
+}
+
+.footer p {
+    margin-bottom: 0.5rem;
+}
+
+/* --- 12. Responsividade --- */
+
+/* Tablet e Celular (landscape) */
+@media (max-width: 992px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .products-section,
+    .cart-section {
+        width: 100%;
+        flex-basis: auto; /* Reseta a base do flex */
+    }
+
+    .cart-section {
+        position: static; /* Remove o "sticky" */
+        top: auto;
+        margin-top: 2rem;
+    }
+
+    .products-grid {
+        /* Garante pelo menos 2 colunas se houver espaço */
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+}
+
+/* Celular (portrait) */
+@media (max-width: 480px) {
+    html {
+        font-size: 15px; /* Reduz a fonte base */
+    }
+    
+    .container {
+        padding: 0 1rem;
+    }
+
+    .header {
+        padding: 1.5rem 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .logo {
+        font-size: 2rem;
+    }
+
+    .products-grid {
+        /* Força uma coluna */
+        grid-template-columns: 1fr;
+    }
+
+    .cart-item {
+        flex-wrap: wrap; /* Permite quebrar a linha se não couber */
+    }
+
+    .cart-item-details {
+        flex-basis: 100%; /* Ocupa a linha toda abaixo da imagem */
+        order: 2;
+    }
+
+    .cart-item-actions {
+        order: 3;
+        margin-left: auto; /* Alinha à direita */
+    }
+
+    .message-container {
+        bottom: 1rem;
+        right: 1rem;
+        left: 1rem;
+        width: auto;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(100%);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        to {
+            opacity: 0;
+            transform: translateY(100%);
+        }
+    }
+}
